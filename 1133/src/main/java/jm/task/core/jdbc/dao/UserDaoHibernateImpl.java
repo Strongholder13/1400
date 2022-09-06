@@ -6,15 +6,10 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import java.util.List;
 
-
-
-
 public class UserDaoHibernateImpl implements UserDao {
 
     private Session session = Util.getSessionFactory().openSession();
-
     public UserDaoHibernateImpl() {
-
     }
 
     @Override
@@ -26,9 +21,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.getTransaction().commit();
 
         } catch (HibernateException e) {
-
         }
-
     }
 
     @Override
@@ -49,7 +42,6 @@ public class UserDaoHibernateImpl implements UserDao {
             session.save(new User(name, lastName, age));
             session.getTransaction().commit();
     }
-
 
     @Override
     public void removeUserById(long id) {

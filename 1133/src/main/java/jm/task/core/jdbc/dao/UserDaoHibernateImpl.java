@@ -38,7 +38,6 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createSQLQuery("DROP TABLE IF EXISTS users").executeUpdate();
             session.getTransaction().commit();
         } catch (HibernateException e) {
-
         }
     }
 
@@ -47,7 +46,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
 
             session.beginTransaction();
-            session.saveOrUpdate(new User(name, lastName, age));
+            session.save(new User(name, lastName, age));
             session.getTransaction().commit();
     }
 

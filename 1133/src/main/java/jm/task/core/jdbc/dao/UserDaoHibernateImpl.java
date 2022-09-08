@@ -14,7 +14,6 @@ public class UserDaoHibernateImpl implements UserDao {
     private Session session = Util.getSessionFactory().openSession();
 
     public UserDaoHibernateImpl() {
-
     }
 
     @Override
@@ -63,16 +62,9 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        try {
             List<User> users;
-            session.beginTransaction();
-            users = session.createQuery("select i from User i").list();
-            session.getTransaction().commit();
+            users = session.createQuery("from User ").list();
             return users;
-        } catch (HibernateException e) {
-            session.getTransaction().rollback();
-            return null;
-        }
     }
 
     @Override
